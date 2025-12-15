@@ -22,16 +22,13 @@ def _find_all_invalid_ids_two(start, end, r):
         for k in range_exp:
             if l % k == 0:
                 is_not_valid = True
-                start_entry = None
+                start_entry = si[:k]
                 range_exp_two = range(l//k - 1, -1, -1) if r else range(0, l//k)
                 for t in range_exp_two:
                     curr_entry = si[t*k:(t+1)*k]
-                    if start_entry == None:
-                        start_entry = curr_entry
-                    else:
-                        if start_entry != curr_entry:
-                            is_not_valid = False
-                            break
+                    if start_entry != curr_entry:
+                        is_not_valid = False
+                        break
                 if is_not_valid:
                     ret += int(si)
                     break
